@@ -19,13 +19,17 @@ terraform {
 
 variable "prefix" {
   description = "Prefix for app resources"
-  type = string
+  type        = string
 }
 
 variable "label" {
-  description = "Label prefix for public DNS names"
+  description = "Label inside public DNS names"
+  type        = string
+  sensitive   = true
+}
+
+variable "region" {
   type = string
-  sensitive = true
 }
 
 provider "azurerm" {

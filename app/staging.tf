@@ -22,7 +22,7 @@ resource "azurerm_public_ip" "web_staging" {
   resource_group_name = azurerm_resource_group.web_staging.name
   location            = azurerm_resource_group.web_staging.location
   allocation_method   = "Dynamic"
-  domain_name_label   = "${var.label}-web-staging-${terraform.workspace}"
+  domain_name_label   = "ac-${var.label}-web-staging-${terraform.workspace}"
 }
 
 resource "azurerm_network_interface" "web_staging" {
@@ -108,4 +108,10 @@ resource "azurerm_linux_virtual_machine" "web_staging" {
     storage_account_type = "Premium_LRS"
     caching              = "ReadWrite"
   }
+}
+
+output "staging_fqdn" {
+  description = "Public DNS FQDN for staging"
+  value       = "${azurerm_public_ip.web_staging.domain_name_label}.${var.region}.cloudapp.azure.com"
+  sensitive   = true
 }
