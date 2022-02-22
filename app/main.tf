@@ -45,7 +45,6 @@ module "staging_web" {
   env    = "staging"
 }
 
-/*
 module "production_web" {
   source = "./webserver"
 
@@ -54,7 +53,6 @@ module "production_web" {
   region = var.region
   env    = "production"
 }
-*/
 
 output "staging_fqdn" {
   description = "Public FQDN for staging webserver"
@@ -62,10 +60,8 @@ output "staging_fqdn" {
   sensitive   = true
 }
 
-/*
 output "production_fqdn" {
   description = "Public FQDN for production webserver"
   value       = module.production_web.fqdn
   sensitive   = true
 }
-*/
