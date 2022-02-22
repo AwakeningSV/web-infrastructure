@@ -35,3 +35,37 @@ variable "region" {
 provider "azurerm" {
   features {}
 }
+
+module "staging_web" {
+  source = "./webserver"
+
+  prefix = var.prefix
+  label  = var.label
+  region = var.region
+  env    = "staging"
+}
+
+/*
+module "production_web" {
+  source = "./webserver"
+
+  prefix = var.prefix
+  label  = var.label
+  region = var.region
+  env    = "production"
+}
+*/
+
+output "staging_fqdn" {
+  description = "Public FQDN for staging webserver"
+  value       = module.staging_web.fqdn
+  sensitive   = true
+}
+
+/*
+output "production_fqdn" {
+  description = "Public FQDN for production webserver"
+  value       = module.production_web.fqdn
+  sensitive   = true
+}
+*/
