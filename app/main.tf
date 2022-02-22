@@ -12,7 +12,7 @@ terraform {
     resource_group_name  = "TerraformState"
     storage_account_name = "awakeningterraform"
     container_name       = "tfstate"
-    key                  = "terraform.tfstate"
+    key                  = "web.tfstate"
     use_microsoft_graph  = true
   }
 }
