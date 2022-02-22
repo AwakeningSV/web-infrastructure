@@ -21,7 +21,7 @@ resource "azurerm_public_ip" "webserver" {
   name                = "${var.prefix}-${var.env}-pip-${terraform.workspace}"
   resource_group_name = azurerm_resource_group.webserver.name
   location            = azurerm_resource_group.webserver.location
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"
   domain_name_label   = "ac-${var.label}-web-${var.env}-${terraform.workspace}"
   sku                 = "Standard"
 }
